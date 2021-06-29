@@ -1,11 +1,16 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
-import {STATUS, PLAYERS} from '../Utils/constants';
-import Theme from '../theme/colors';
+import { Text, View, StyleSheet } from 'react-native';
+import { STATUS, PLAYERS } from '../Utils/constants';
+import Theme from '../theme/theme';
 import PropTypes from 'prop-types';
 
-const Status = (props) => {
-  const buildStatus = (text) => (
+interface StatusProps {
+  status: string;
+  player: string,
+}
+
+const Status: React.FC<StatusProps>  = (props): React.ReactElement => {
+  const buildStatus = (text: String): React.ReactElement=> (
     <View style={styles.container}>
       <Text style={styles.text}>{text}</Text>
     </View>
@@ -13,10 +18,11 @@ const Status = (props) => {
 
   switch (props.status) {
     case STATUS.init:
+      return buildStatus(props.player + ' make your first move!');
     case STATUS.play:
-      return buildStatus('🎬 Next Player ' + props.player);
+      return buildStatus('Next Player ' + props.player);
     case STATUS.win:
-      return buildStatus(props.player + ' Is The Winner 🤩😎🥳');
+      return buildStatus(props.player + ' Is The Winner 😎');
     case STATUS.draw:
       return buildStatus('🤨😱😜 GAME OVER');
   }
@@ -24,23 +30,20 @@ const Status = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 8,
-    paddingVertical: 16,
+    marginTop: 16,
+    paddingVertical: 8,
     paddingHorizontal: 20,
-    justifyContent: 'center',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    backgroundColor: Theme.Colors.Blue,
+    // backgroundColor: Theme.Colors.Blue,
   },
   text: {
     textAlign: 'center',
-    color: Theme.Colors.Text,
+    color: Theme.Colors.Black,
     fontSize: 25,
   },
 });
 
 Status.propTypes = {
-  player: PropTypes.oneOf([PLAYERS.X, PLAYERS.O]).isRequired,
+  player: PropTypes.oneOf(['Player 1', 'Player 2']).isRequired,
   status: PropTypes.oneOf([STATUS.draw, STATUS.init, STATUS.play, STATUS.win])
     .isRequired,
 };

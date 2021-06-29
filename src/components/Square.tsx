@@ -1,11 +1,13 @@
 import React from 'react';
 import {TouchableOpacity, Text, StyleSheet} from 'react-native';
-import Theme from '../theme/colors';
+import Theme from '../theme/theme';
 import PropTypes from 'prop-types';
 import {PLAYERS} from '../Utils/constants';
+import { BoardCell } from '../screens/Main';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-const Square = (props) => {
-  const backgroundColor = props.isWin ? Theme.Colors.Red : Theme.Colors.Yellow;
+const Square:React.FC<BoardCell>= (props): React.ReactElement  => {
+  const backgroundColor = props.isWinCondition ? Theme.Colors.White : Theme.Colors.Green;
   return (
     <TouchableOpacity
       style={[styles.container, {backgroundColor}]}
@@ -23,7 +25,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: 100,
-    width: 100,
+    width: wp('25%'),
     backgroundColor: Theme.Colors.Yellow,
   },
   value: {
@@ -34,8 +36,8 @@ const styles = StyleSheet.create({
 });
 
 Square.propTypes = {
-  value: PropTypes.oneOf([PLAYERS.X, PLAYERS.O, '.']).isRequired,
-  isWin: PropTypes.bool.isRequired,
+  value: PropTypes.oneOf([PLAYERS.X, PLAYERS.O, '']),
+  isWinCondition: PropTypes.bool.isRequired,
   isMarked: PropTypes.bool.isRequired,
   onPress: PropTypes.func.isRequired,
 };

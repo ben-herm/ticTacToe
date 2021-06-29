@@ -3,21 +3,22 @@ import {View, StyleSheet, ScrollView} from 'react-native';
 import Square from './Square';
 import PropTypes from 'prop-types';
 import {PLAYERS} from '../Utils/constants';
-import { BoardCell } from './screens/Main';
+import { BoardCell } from '../screens/Main';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export interface BoardComponentProps {
     squares?: Array<BoardCell>;
     onSquarePress: (squareIdx: number) => void;
   }
 
-const Board: React.FC<BoardComponentProps>  = (props) => (
+const Board: React.FC<BoardComponentProps>  = (props): React.ReactElement  => (
   <View style={styles.container}>
     {props.squares.map((square, idx) => (
       <Square
         key={idx}
         value={square.value}
         isMarked={square.isMarked}
-        isWin={square.isWinCondition}
+        isWinCondition={square.isWinCondition}
         onPress={() => props.onSquarePress(idx)}
       />
     ))}
@@ -26,7 +27,7 @@ const Board: React.FC<BoardComponentProps>  = (props) => (
 
 const styles = StyleSheet.create({
   container: {
-    width: 400,
+    width: wp('110%') ,
     marginVertical: 16,
     paddingHorizontal: 40,
     flexDirection: 'row',
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
 Board.propTypes = {
   squares: PropTypes.arrayOf(
     PropTypes.exact({
-      value: PropTypes.oneOf([PLAYERS.X, PLAYERS.O, '.']).isRequired,
+      value: PropTypes.oneOf([PLAYERS.X, PLAYERS.O, '']).isRequired,
       isMarked: PropTypes.bool.isRequired,
       isWinCondition: PropTypes.bool.isRequired,
     }),
