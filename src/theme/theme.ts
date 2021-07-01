@@ -1,18 +1,18 @@
 type Theme = {
   Colors: {
     Background: string,
-    Blue:string,
+    Blue: string,
     Green: string,
-    Red:string,
-    Yellow:string
+    Red: string,
+    Yellow: string
     Black: string,
-    Brown:string,
-    White:string,
-Pink:string
+    Brown: string,
+    White: string,
+    Pink: string
   }
 }
 
-const Colors:Theme['Colors'] = {
+const Colors: Theme['Colors'] = {
   Background: '#010402',
   Blue: '#1c2c54',
   Green: '#91c7b1',

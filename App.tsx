@@ -15,7 +15,6 @@ import {
   useColorScheme,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
 import { Header } from 'react-native-elements';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {
@@ -34,7 +33,7 @@ const App = () => {
     <>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <SafeAreaProvider>
-        <Main />
+        <Main/>
       </SafeAreaProvider>
     </>
   );

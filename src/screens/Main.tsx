@@ -127,9 +127,7 @@ const Main: React.FC = (): React.ReactElement => {
     <>
       <Header
         placement="center"
-        // leftComponent={{ icon: 'menu', color: '#fff', onPress: ()=> {console.log()}}}
         centerComponent={{ text: 'Tic Tac Toe - Ben Herman', style: { color: '#fff' } }}
-      // rightComponent={{ icon: 'home', color: '#fff' }}
       />
       <View style={{ justifyContent: 'center', flex: 1, alignItems: 'center' }}>
         <Status status={status} player={player()} />
