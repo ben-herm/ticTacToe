@@ -18,7 +18,7 @@ type Winner = {
   winningSquares: Array<number>
 }
 
-const Main = (): React.ReactElement => {
+const Main: React.FC = (): React.ReactElement => {
 
   const buildSquare = (): BoardCell => ({
     value: '',

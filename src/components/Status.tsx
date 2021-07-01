@@ -24,7 +24,7 @@ const Status: React.FC<StatusProps>  = (props): React.ReactElement => {
     case STATUS.win:
       return buildStatus(props.player + ' Is The Winner 😎');
     case STATUS.draw:
-      return buildStatus('🤨😱😜 GAME OVER');
+      return buildStatus("It's A Draw! 😜");
   }
 };
 
